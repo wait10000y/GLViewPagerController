@@ -1,6 +1,6 @@
 // GLViewPagerViewController.h
 //
-// Copyright (c) 2017 XuYanci (http://yanci.me)
+// 2017 XuYanci (http://yanci.me)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -93,7 +93,9 @@ contentViewControllerForTabAtIndex:(NSUInteger)index;
 
 @end
 
-@interface GLViewPagerViewController : UIViewController
+#import "YV_BaseViewController.h"
+
+@interface GLViewPagerViewController : YV_BaseViewController
 
 /** 数据源 */
 @property (nonatomic,weak)id<GLViewPagerViewControllerDataSource> dataSource;
@@ -102,14 +104,19 @@ contentViewControllerForTabAtIndex:(NSUInteger)index;
 
 /** 指示器颜色 */
 @property (nonatomic,strong)UIColor *indicatorColor;
+/**  tabContent 背景色 */
+@property(nonatomic) UIColor *tabBackgroundColor;
+/**  pageView 背景色 */
+@property(nonatomic) UIColor *pageViewBackgroundColor;
+
 /** 默认标签字体 */
-@property (nonatomic,strong)DEPRECATED_ATTRIBUTE UIFont *tabFontDefault;
+//@property (nonatomic,strong)DEPRECATED_ATTRIBUTE UIFont *tabFontDefault;
 /** 选择标签字体 */
-@property (nonatomic,strong)DEPRECATED_ATTRIBUTE UIFont *tabFontSelected;
+//@property (nonatomic,strong)DEPRECATED_ATTRIBUTE UIFont *tabFontSelected;
 /** 默认标签字体颜色 */
-@property (nonatomic,strong)DEPRECATED_ATTRIBUTE UIColor *tabTextColorDefault;
+//@property (nonatomic,strong)DEPRECATED_ATTRIBUTE UIColor *tabTextColorDefault;
 /** 选择标签字体颜色 */
-@property (nonatomic,strong)DEPRECATED_ATTRIBUTE UIColor *tabTextColorSelected;
+//@property (nonatomic,strong)DEPRECATED_ATTRIBUTE UIColor *tabTextColorSelected;
 /** 固定标签宽度 */
 @property (nonatomic,assign)BOOL fixTabWidth;
 /** 标签宽度 */
@@ -140,7 +147,8 @@ contentViewControllerForTabAtIndex:(NSUInteger)index;
 
 /** 重新加载数据,会调用DataSource方法并重新构建视图 */
 - (void)reloadData;
-
+// 更新布局
+-(void)updateViewFrames;
 /**
  获取标签
 
